@@ -10,12 +10,12 @@
 		6428955A2460AB76005361D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895592460AB76005361D0 /* AppDelegate.swift */; };
 		6428955C2460AB76005361D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428955B2460AB76005361D0 /* SceneDelegate.swift */; };
 		6428955E2460AB76005361D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428955D2460AB76005361D0 /* ViewController.swift */; };
-		642895612460AB76005361D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6428955F2460AB76005361D0 /* Main.storyboard */; };
 		642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 642895622460AB76005361D0 /* MarvelCards.xcdatamodeld */; };
 		642895662460AB7B005361D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642895652460AB7B005361D0 /* Assets.xcassets */; };
 		642895692460AB7B005361D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642895672460AB7B005361D0 /* LaunchScreen.storyboard */; };
 		642895742460AB7B005361D0 /* MarvelCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895732460AB7B005361D0 /* MarvelCardsTests.swift */; };
 		6428957F2460AB7B005361D0 /* MarvelCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */; };
+		642895902460ABF3005361D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428958F2460ABF3005361D0 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		642895592460AB76005361D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6428955B2460AB76005361D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6428955D2460AB76005361D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		642895602460AB76005361D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		642895632460AB76005361D0 /* MarvelCards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelCards.xcdatamodel; sourceTree = "<group>"; };
 		642895652460AB7B005361D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		642895682460AB7B005361D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		6428957A2460AB7B005361D0 /* MarvelCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCardsUITests.swift; sourceTree = "<group>"; };
 		642895802460AB7B005361D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6428958F2460ABF3005361D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +101,12 @@
 		642895582460AB76005361D0 /* MarvelCards */ = {
 			isa = PBXGroup;
 			children = (
+				6428958E2460ABDE005361D0 /* Model */,
+				6428958D2460ABD6005361D0 /* View */,
+				6428958C2460ABC7005361D0 /* Controller */,
 				642895592460AB76005361D0 /* AppDelegate.swift */,
 				6428955B2460AB76005361D0 /* SceneDelegate.swift */,
 				6428955D2460AB76005361D0 /* ViewController.swift */,
-				6428955F2460AB76005361D0 /* Main.storyboard */,
 				642895652460AB7B005361D0 /* Assets.xcassets */,
 				642895672460AB7B005361D0 /* LaunchScreen.storyboard */,
 				6428956A2460AB7B005361D0 /* Info.plist */,
@@ -129,6 +131,28 @@
 				642895802460AB7B005361D0 /* Info.plist */,
 			);
 			path = MarvelCardsUITests;
+			sourceTree = "<group>";
+		};
+		6428958C2460ABC7005361D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6428958F2460ABF3005361D0 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6428958D2460ABD6005361D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6428958E2460ABDE005361D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +261,6 @@
 			files = (
 				642895692460AB7B005361D0 /* LaunchScreen.storyboard in Resources */,
 				642895662460AB7B005361D0 /* Assets.xcassets in Resources */,
-				642895612460AB76005361D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				642895902460ABF3005361D0 /* HomeViewController.swift in Sources */,
 				642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */,
 				6428955E2460AB76005361D0 /* ViewController.swift in Sources */,
 				6428955A2460AB76005361D0 /* AppDelegate.swift in Sources */,
@@ -301,14 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6428955F2460AB76005361D0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				642895602460AB76005361D0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		642895672460AB7B005361D0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
