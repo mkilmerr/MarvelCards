@@ -11,5 +11,6 @@ import UIKit
 class HomeViewController: UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = .white
+        CharactersServiceRaw.shared.fetchCharactersWithLimit(limit: 6)
     }
 }
