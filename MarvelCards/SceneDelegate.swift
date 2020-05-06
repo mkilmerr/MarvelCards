@@ -14,13 +14,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.setBackgroundImage(UIImage(), for: .default)
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.barTintColor = UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let viewController = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = viewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+         
         
     }
     

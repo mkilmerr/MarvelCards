@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController:UIViewController, UINavigationControllerDelegate {
     let loginView = LoginView()
     var gestureRecognizer:UITapGestureRecognizer!
     override func viewDidLoad() {
@@ -21,7 +21,19 @@ class LoginViewController: UIViewController {
         gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(createAccountTapped))
         
         loginView.createAccountLabel.addGestureRecognizer(gestureRecognizer)
+    
+//        dismiss(animated: true) {
+//            print("ooooo")
+//            self.navigationController?.navigationBar.isHidden = true
+//        }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = true
+        
+
     }
     
     
@@ -31,8 +43,17 @@ class LoginViewController: UIViewController {
     }
     
     @objc func createAccountTapped(){
+      
         let createAccountViewController = CreateAccountViewController()
-        createAccountViewController.modalPresentationStyle = .currentContext
-        self.present(createAccountViewController, animated: true)
+        self.navigationController?.pushViewController(createAccountViewController, animated: true)
+        navigationController?.navigationBar.isHidden = false
+
+//        self.navigationController?.pushViewController(createAccountViewController, animated: true)
+        print("???")
+//        createAccountViewController.modalPresentationStyle = .currentContext
+//        self.navigationController?.pushViewController(createAccountViewController, animated: true)
+//        self.present(createAccountViewController, animated: true)
+      
+
     }
 }
