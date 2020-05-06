@@ -15,7 +15,7 @@
 		642895692460AB7B005361D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642895672460AB7B005361D0 /* LaunchScreen.storyboard */; };
 		642895742460AB7B005361D0 /* MarvelCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895732460AB7B005361D0 /* MarvelCardsTests.swift */; };
 		6428957F2460AB7B005361D0 /* MarvelCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */; };
-		642895902460ABF3005361D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428958F2460ABF3005361D0 /* HomeViewController.swift */; };
+		642895902460ABF3005361D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428958F2460ABF3005361D0 /* LoginViewController.swift */; };
 		642895932460BBCF005361D0 /* CharactersServiceRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895922460BBCF005361D0 /* CharactersServiceRaw.swift */; };
 		642895962460CA8D005361D0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; };
 		642895972460CA8D005361D0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -31,6 +31,7 @@
 		64589D012461F98100BC013D /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589D002461F98100BC013D /* URLModel.swift */; };
 		64589D032461F99F00BC013D /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589D022461F99F00BC013D /* SeriesModel.swift */; };
 		64589D052461F9B100BC013D /* StoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589D042461F9B100BC013D /* StoriesModel.swift */; };
+		64C0E95F246227EE00D65232 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0E95E246227EE00D65232 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +80,7 @@
 		6428957A2460AB7B005361D0 /* MarvelCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCardsUITests.swift; sourceTree = "<group>"; };
 		642895802460AB7B005361D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6428958F2460ABF3005361D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6428958F2460ABF3005361D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		642895922460BBCF005361D0 /* CharactersServiceRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceRaw.swift; sourceTree = "<group>"; };
 		642895952460CA8D005361D0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6428959A2460D17D005361D0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		64589D002461F98100BC013D /* URLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		64589D022461F99F00BC013D /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
 		64589D042461F9B100BC013D /* StoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesModel.swift; sourceTree = "<group>"; };
+		64C0E95E246227EE00D65232 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +184,7 @@
 		6428958C2460ABC7005361D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6428958F2460ABF3005361D0 /* HomeViewController.swift */,
+				6428958F2460ABF3005361D0 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 		6428958D2460ABD6005361D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				64C0E95E246227EE00D65232 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,7 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642895902460ABF3005361D0 /* HomeViewController.swift in Sources */,
+				642895902460ABF3005361D0 /* LoginViewController.swift in Sources */,
 				64589D052461F9B100BC013D /* StoriesModel.swift in Sources */,
 				642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */,
 				6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */,
@@ -407,6 +410,7 @@
 				6428955C2460AB76005361D0 /* SceneDelegate.swift in Sources */,
 				64589D012461F98100BC013D /* URLModel.swift in Sources */,
 				64589CFD2461F93E00BC013D /* EventsModel.swift in Sources */,
+				64C0E95F246227EE00D65232 /* LoginView.swift in Sources */,
 				64589CF02461F84C00BC013D /* DataModel.swift in Sources */,
 				64589D032461F99F00BC013D /* SeriesModel.swift in Sources */,
 			);
