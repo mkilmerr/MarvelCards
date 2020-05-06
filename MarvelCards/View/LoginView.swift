@@ -11,7 +11,7 @@ import UIKit
 class LoginView: UIView,UITextFieldDelegate {
     
     let loginLabel:UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 38)
         label.font = UIFont.init(name: "Arial Rounded MT Bold", size: 38)
         label.textColor = UIColor.white
@@ -34,7 +34,7 @@ class LoginView: UIView,UITextFieldDelegate {
     }()
     
     let passwordTextField:UITextField = {
-       let txt = UITextField()
+        let txt = UITextField()
         txt.font = UIFont.init(name: "Arial Rounded MT Bold", size: 14)
         txt.placeholder = "Password"
         txt.isSecureTextEntry = true
@@ -47,7 +47,7 @@ class LoginView: UIView,UITextFieldDelegate {
     }()
     
     let loginButton:UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.setTitle("Login", for: .normal)
         btn.backgroundColor = UIColor.black
         
@@ -57,6 +57,24 @@ class LoginView: UIView,UITextFieldDelegate {
         
         return btn
         
+    }()
+    
+    let dontHaveAnAccountLabel:UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Dont have an account?"
+        lbl.font = UIFont.init(name: "Arial Rounded MT Bold", size: 15)
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
+    let createAccountLabel:UILabel = {
+       let lbl = UILabel()
+        lbl.text = "CREATE"
+        lbl.font = UIFont.init(name: "Arial Rounded MT Bold", size: 15)
+        lbl.textColor = .white
+        lbl.isUserInteractionEnabled = true
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
     }()
     
     @objc func btnLoginTapped(){
@@ -85,6 +103,8 @@ extension LoginView{
         self.emailTextFieldConstraints(view)
         self.passwordTextFieldConstraints(view)
         self.buttonLoginConstraints(view)
+        self.dontHaveAnAccountConstraints(view)
+        self.createAccountConstraints(view)
     }
     
     func loginLabelConstraints(_ view:UIView){
@@ -120,11 +140,26 @@ extension LoginView{
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
+    func dontHaveAnAccountConstraints(_ view:UIView){
+        view.addSubview(dontHaveAnAccountLabel)
+        
+//        dontHaveAnAccountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        dontHaveAnAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -20).isActive = true
+        dontHaveAnAccountLabel.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+    }
+    
+    func createAccountConstraints(_ view:UIView){
+        view.addSubview(createAccountLabel)
+        
+        createAccountLabel.leadingAnchor.constraint(equalTo: dontHaveAnAccountLabel.leadingAnchor, constant: 170).isActive = true
+        createAccountLabel.bottomAnchor.constraint(equalTo: dontHaveAnAccountLabel.bottomAnchor).isActive = true
+    }
+    
 }
 
 
 /*
-
+ 
  let sampleTextField =  UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
  sampleTextField.placeholder = "Enter text here"
  sampleTextField.font = UIFont.systemFont(ofSize: 15)

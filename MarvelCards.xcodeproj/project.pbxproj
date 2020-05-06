@@ -20,6 +20,7 @@
 		642895962460CA8D005361D0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; };
 		642895972460CA8D005361D0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428959A2460D17D005361D0 /* CharactersModel.swift */; };
+		6439EC5E24635C10006139BB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439EC5D24635C10006139BB /* CreateAccountViewController.swift */; };
 		64589CF02461F84C00BC013D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CEF2461F84C00BC013D /* DataModel.swift */; };
 		64589CF32461F88F00BC013D /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF22461F88F00BC013D /* ResultsModel.swift */; };
 		64589CF52461F8B700BC013D /* HeaderInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF42461F8B700BC013D /* HeaderInfoModel.swift */; };
@@ -84,6 +85,7 @@
 		642895922460BBCF005361D0 /* CharactersServiceRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceRaw.swift; sourceTree = "<group>"; };
 		642895952460CA8D005361D0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6428959A2460D17D005361D0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		6439EC5D24635C10006139BB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		64589CEF2461F84C00BC013D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		64589CF22461F88F00BC013D /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
 		64589CF42461F8B700BC013D /* HeaderInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoModel.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				6428958F2460ABF3005361D0 /* LoginViewController.swift */,
+				6439EC5D24635C10006139BB /* CreateAccountViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6439EC5E24635C10006139BB /* CreateAccountViewController.swift in Sources */,
 				642895902460ABF3005361D0 /* LoginViewController.swift in Sources */,
 				64589D052461F9B100BC013D /* StoriesModel.swift in Sources */,
 				642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */,
