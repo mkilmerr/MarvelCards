@@ -28,23 +28,34 @@ class LoginView: UIView,UITextFieldDelegate {
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
+        txt.returnKeyType = UIReturnKeyType.done
         
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
+    let seePasswordButton:UIButton = {
+        let btn = UIButton(frame: .init(x: 0, y: 0, width: 300, height: 200))
+        btn.setTitle("HIDE/SEE", for: .normal)
+        
+//        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
     
     let passwordTextField:UITextField = {
         let txt = UITextField()
+      
         txt.font = UIFont.init(name: "Arial Rounded MT Bold", size: 14)
         txt.placeholder = "Password"
         txt.isSecureTextEntry = true
         txt.keyboardType = UIKeyboardType.default
         txt.borderStyle = UITextField.BorderStyle.roundedRect
+        txt.returnKeyType = UIReturnKeyType.done
         txt.layer.cornerRadius = 30
-        
-        txt.translatesAutoresizingMaskIntoConstraints = false
+            txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
+    
+    
     
     let loginButton:UIButton = {
         let btn = UIButton()
@@ -68,7 +79,7 @@ class LoginView: UIView,UITextFieldDelegate {
     }()
     
     let createAccountLabel:UILabel = {
-       let lbl = UILabel()
+        let lbl = UILabel()
         lbl.text = "CREATE"
         lbl.font = UIFont.init(name: "Arial Rounded MT Bold", size: 15)
         lbl.textColor = .white
@@ -105,6 +116,7 @@ extension LoginView{
         self.buttonLoginConstraints(view)
         self.dontHaveAnAccountConstraints(view)
         self.createAccountConstraints(view)
+        self.setRightButtonInPasswordField(view)
     }
     
     func loginLabelConstraints(_ view:UIView){
@@ -143,7 +155,7 @@ extension LoginView{
     func dontHaveAnAccountConstraints(_ view:UIView){
         view.addSubview(dontHaveAnAccountLabel)
         
-//        dontHaveAnAccountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        //        dontHaveAnAccountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         dontHaveAnAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -20).isActive = true
         dontHaveAnAccountLabel.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
     }
@@ -153,6 +165,12 @@ extension LoginView{
         
         createAccountLabel.leadingAnchor.constraint(equalTo: dontHaveAnAccountLabel.leadingAnchor, constant: 170).isActive = true
         createAccountLabel.bottomAnchor.constraint(equalTo: dontHaveAnAccountLabel.bottomAnchor).isActive = true
+    }
+    
+    func setRightButtonInPasswordField(_ view:UIView){
+        view.addSubview(seePasswordButton)
+        self.passwordTextField.rightView = seePasswordButton
+        self.passwordTextField.rightViewMode = .always
     }
     
 }
