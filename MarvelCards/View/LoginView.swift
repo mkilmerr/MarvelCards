@@ -13,7 +13,7 @@ class LoginView: UIView,UITextFieldDelegate {
     let loginLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 38)
-        label.font = UIFont.init(name: "Arial Rounded MT Bold", size: 38)
+        label.font = UIFont.loginAndCreateLabel
         label.textColor = UIColor.white
         label.text = "Log in"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class LoginView: UIView,UITextFieldDelegate {
     
     let emailTextField:UITextField = {
         let txt = UITextField()
-        txt.font = UIFont.init(name:"Arial Rounded MT Bold" , size: 14)
+        txt.font = UIFont.loginAndCreateTextFieldLabel
         txt.placeholder = "Email"
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.keyboardType = UIKeyboardType.default
@@ -44,7 +44,7 @@ class LoginView: UIView,UITextFieldDelegate {
     let passwordTextField:UITextField = {
         let txt = UITextField()
       
-        txt.font = UIFont.init(name: "Arial Rounded MT Bold", size: 14)
+        txt.font = UIFont.loginAndCreateTextFieldLabel
         txt.placeholder = "Password"
         txt.isSecureTextEntry = true
         txt.keyboardType = UIKeyboardType.default

@@ -9,11 +9,15 @@
 import UIKit
 
 class CreateAccountViewController: UIViewController {
-
+   let createAccountView = CreateAccountView()
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
+        createAccountView.addAllElementsInCreateAccountController(self.view)
+        
         self.view.backgroundColor = UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
+        
+       
 
 
     }

@@ -21,6 +21,8 @@
 		642895972460CA8D005361D0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428959A2460D17D005361D0 /* CharactersModel.swift */; };
 		6439EC5E24635C10006139BB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439EC5D24635C10006139BB /* CreateAccountViewController.swift */; };
+		6447FBDA2464B62400C282CF /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447FBD92464B62400C282CF /* CreateAccountView.swift */; };
+		6447FBDD2464B67700C282CF /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6447FBDC2464B67700C282CF /* UIFont.swift */; };
 		64589CF02461F84C00BC013D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CEF2461F84C00BC013D /* DataModel.swift */; };
 		64589CF32461F88F00BC013D /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF22461F88F00BC013D /* ResultsModel.swift */; };
 		64589CF52461F8B700BC013D /* HeaderInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF42461F8B700BC013D /* HeaderInfoModel.swift */; };
@@ -86,6 +88,8 @@
 		642895952460CA8D005361D0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6428959A2460D17D005361D0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		6439EC5D24635C10006139BB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		6447FBD92464B62400C282CF /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		6447FBDC2464B67700C282CF /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		64589CEF2461F84C00BC013D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		64589CF22461F88F00BC013D /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
 		64589CF42461F8B700BC013D /* HeaderInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoModel.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		642895582460AB76005361D0 /* MarvelCards */ = {
 			isa = PBXGroup;
 			children = (
+				6447FBDB2464B66300C282CF /* Extensions */,
 				642895912460BBB2005361D0 /* Services */,
 				6428958E2460ABDE005361D0 /* Model */,
 				6428958D2460ABD6005361D0 /* View */,
@@ -196,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				64C0E95E246227EE00D65232 /* LoginView.swift */,
+				6447FBD92464B62400C282CF /* CreateAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +228,14 @@
 				642895952460CA8D005361D0 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6447FBDB2464B66300C282CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6447FBDC2464B67700C282CF /* UIFont.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		64589CF12461F86700BC013D /* CharacterServiceModel */ = {
@@ -400,8 +414,10 @@
 				6439EC5E24635C10006139BB /* CreateAccountViewController.swift in Sources */,
 				642895902460ABF3005361D0 /* LoginViewController.swift in Sources */,
 				64589D052461F9B100BC013D /* StoriesModel.swift in Sources */,
+				6447FBDA2464B62400C282CF /* CreateAccountView.swift in Sources */,
 				642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */,
 				6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */,
+				6447FBDD2464B67700C282CF /* UIFont.swift in Sources */,
 				64589CF92461F8F000BC013D /* ComicsModel.swift in Sources */,
 				64589CF32461F88F00BC013D /* ResultsModel.swift in Sources */,
 				6428955E2460AB76005361D0 /* ViewController.swift in Sources */,
