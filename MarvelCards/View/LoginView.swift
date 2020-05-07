@@ -29,6 +29,8 @@ class LoginView: UIView,UITextFieldDelegate {
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
         txt.returnKeyType = UIReturnKeyType.done
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
         
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
@@ -37,13 +39,13 @@ class LoginView: UIView,UITextFieldDelegate {
         let btn = UIButton(frame: .init(x: 0, y: 0, width: 300, height: 200))
         btn.setTitle("HIDE/SEE", for: .normal)
         
-//        btn.translatesAutoresizingMaskIntoConstraints = false
+        //        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
     let passwordTextField:UITextField = {
         let txt = UITextField()
-      
+        
         txt.font = UIFont.loginAndCreateTextFieldLabel
         txt.placeholder = "Password"
         txt.isSecureTextEntry = true
@@ -51,7 +53,9 @@ class LoginView: UIView,UITextFieldDelegate {
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.returnKeyType = UIReturnKeyType.done
         txt.layer.cornerRadius = 30
-            txt.translatesAutoresizingMaskIntoConstraints = false
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
+        txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
     

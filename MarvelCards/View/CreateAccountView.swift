@@ -28,6 +28,8 @@ class CreateAccountView: UIView {
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
         txt.returnKeyType = UIReturnKeyType.done
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
         
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
@@ -41,6 +43,8 @@ class CreateAccountView: UIView {
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
         txt.returnKeyType = UIReturnKeyType.done
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
         
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
@@ -57,6 +61,8 @@ class CreateAccountView: UIView {
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.returnKeyType = UIReturnKeyType.done
         txt.layer.cornerRadius = 30
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
@@ -70,6 +76,8 @@ class CreateAccountView: UIView {
         txt.keyboardType = UIKeyboardType.default
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.returnKeyType = UIReturnKeyType.done
+        txt.autocorrectionType = UITextAutocorrectionType.no
+        txt.autocapitalizationType = UITextAutocapitalizationType.none
         txt.layer.cornerRadius = 30
         txt.translatesAutoresizingMaskIntoConstraints = false
         
@@ -101,7 +109,7 @@ extension CreateAccountView{
         self.confirmPasswordTextFieldConstraints(view)
     }
     
-    func createAccountLabelConstraints(_ view:UIView){
+    private func createAccountLabelConstraints(_ view:UIView){
         view.addSubview(createAccountLabel)
         
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -109,7 +117,7 @@ extension CreateAccountView{
     }
     
     
-    func emailTextFieldConstraints(_ view:UIView){
+    private func emailTextFieldConstraints(_ view:UIView){
         view.addSubview(emailTextField)
         
         emailTextField.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 50).isActive = true
@@ -117,7 +125,7 @@ extension CreateAccountView{
         emailTextField.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 40).isActive = true
     }
     
-    func nameTextFieldConstraints(_ view:UIView){
+    private func nameTextFieldConstraints(_ view:UIView){
         view.addSubview(nameTextField)
         
         nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
@@ -126,7 +134,7 @@ extension CreateAccountView{
     }
     
     
-    func passwordTextFieldConstraints(_ view:UIView){
+    private func passwordTextFieldConstraints(_ view:UIView){
         view.addSubview(passwordTextField)
         
         passwordTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20).isActive = true
@@ -134,7 +142,7 @@ extension CreateAccountView{
         passwordTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
     }
     
-    func confirmPasswordTextFieldConstraints(_ view:UIView){
+    private func confirmPasswordTextFieldConstraints(_ view:UIView){
         view.addSubview(confirmTextField)
         
         confirmTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
