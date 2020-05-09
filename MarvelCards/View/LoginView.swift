@@ -1,16 +1,25 @@
 //
-//  LoginView.swift
+//  LoginViewTest.swift
 //  MarvelCards
 //
-//  Created by Marcos Kilmer on 05/05/20.
+//  Created by Marcos Kilmer on 09/05/20.
 //  Copyright © 2020 mkilmer. All rights reserved.
 //
 
 import UIKit
 
-class LoginView: UIView,UITextFieldDelegate {
+protocol LoginViewDelegate: class {
+    func didTapLoginButton(email:UITextField,password:UITextField)
+    func didTapCreateAccount()
+}
+
+class LoginView: ReusableView,UITextFieldDelegate {
+    var gestureRecognizer:UITapGestureRecognizer!
+    weak var delegate: LoginViewDelegate?
     
-    let loginLabel:UILabel = {
+    //MARK:- UI Elements
+    
+    lazy var loginLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 38)
         label.font = UIFont.loginAndCreateLabel
@@ -21,7 +30,7 @@ class LoginView: UIView,UITextFieldDelegate {
         return label
     }()
     
-    let emailTextField:UITextField = {
+    lazy var emailTextField:UITextField = {
         let txt = UITextField()
         txt.font = UIFont.loginAndCreateTextFieldLabel
         txt.placeholder = "Email"
@@ -35,15 +44,9 @@ class LoginView: UIView,UITextFieldDelegate {
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
-    let seePasswordButton:UIButton = {
-        let btn = UIButton(frame: .init(x: 0, y: 0, width: 300, height: 200))
-        btn.setTitle("HIDE/SEE", for: .normal)
-        
-        //        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
     
-    let passwordTextField:UITextField = {
+    
+    lazy var passwordTextField:UITextField = {
         let txt = UITextField()
         
         txt.font = UIFont.loginAndCreateTextFieldLabel
@@ -61,7 +64,7 @@ class LoginView: UIView,UITextFieldDelegate {
     
     
     
-    let loginButton:UIButton = {
+    lazy var loginButton:UIButton = {
         let btn = UIButton()
         btn.setTitle("Login", for: .normal)
         btn.backgroundColor = UIColor.black
@@ -74,7 +77,7 @@ class LoginView: UIView,UITextFieldDelegate {
         
     }()
     
-    let dontHaveAnAccountLabel:UILabel = {
+    lazy var dontHaveAnAccountLabel:UILabel = {
         let lbl = UILabel()
         lbl.text = "Dont have an account?"
         lbl.font = UIFont.init(name: "Arial Rounded MT Bold", size: 15)
@@ -82,7 +85,7 @@ class LoginView: UIView,UITextFieldDelegate {
         return lbl
     }()
     
-    let createAccountLabel:UILabel = {
+    lazy var createAccountLabel:UILabel = {
         let lbl = UILabel()
         lbl.text = "CREATE"
         lbl.font = UIFont.init(name: "Arial Rounded MT Bold", size: 15)
@@ -92,105 +95,106 @@ class LoginView: UIView,UITextFieldDelegate {
         return lbl
     }()
     
-    @objc func btnLoginTapped(){
-        print("tapped")
-    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func setViews() {
+        super.setViews()
+        super.setViews()
+        
+        self.backgroundColor =  UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
+        addSubview(loginLabel)
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
+        addSubview(loginButton)
+        addSubview(dontHaveAnAccountLabel)
+        addSubview(createAccountLabel)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        
+      gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCreateAccount))
+        
+        createAccountLabel.addGestureRecognizer(gestureRecognizer)
+
+        
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    override func layoutViews() {
+        super.layoutViews()
+        loginLabelConstraints()
+        emailTextFieldConstraints()
+        passwordTextFieldConstraints()
+        buttonLoginConstraints()
+        dontHaveAnAccountConstraints()
+        createAccountConstraints()
+        
     }
     
+
     
-    
-    
-    
+   
     
 }
 
-extension LoginView{
-    func addAllElementsInViewController(_ view:UIView){
-        self.loginLabelConstraints(view)
-        self.emailTextFieldConstraints(view)
-        self.passwordTextFieldConstraints(view)
-        self.buttonLoginConstraints(view)
-        self.dontHaveAnAccountConstraints(view)
-        self.createAccountConstraints(view)
-        self.setRightButtonInPasswordField(view)
-    }
+//MARK:- Constraints Methods
+private extension LoginView{
     
-    func loginLabelConstraints(_ view:UIView){
-        view.addSubview(loginLabel)
-        loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
-        loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-    }
+    func loginLabelConstraints(){
+           loginLabel.topAnchor.constraint(equalTo: topAnchor, constant: 140).isActive = true
+           loginLabel.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
+           
+       }
+       
     
-    func emailTextFieldConstraints(_ view:UIView){
-        view.addSubview(emailTextField)
-        
+    func emailTextFieldConstraints(){
         emailTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 90).isActive = true
-        emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailTextField.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 40).isActive = true
+        emailTextField.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo:widthAnchor, constant: -40).isActive = true
     }
     
-    func passwordTextFieldConstraints(_ view:UIView){
-        view.addSubview(passwordTextField)
-        
+    func passwordTextFieldConstraints(){
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
-        passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        passwordTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
+        passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo:widthAnchor, constant: -40).isActive = true
     }
     
-    func buttonLoginConstraints(_ view:UIView){
-        view.addSubview(loginButton)
-        
+    func buttonLoginConstraints(){
         loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 60).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 100 ).isActive = true
+        loginButton.widthAnchor.constraint(equalTo:widthAnchor, constant: -100).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
-    func dontHaveAnAccountConstraints(_ view:UIView){
-        view.addSubview(dontHaveAnAccountLabel)
+    func dontHaveAnAccountConstraints(){
+      
+        dontHaveAnAccountLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -20).isActive = true
+        dontHaveAnAccountLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
+    }
+    
+    func createAccountConstraints(){
         
-        //        dontHaveAnAccountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        dontHaveAnAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -20).isActive = true
-        dontHaveAnAccountLabel.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-    }
-    
-    func createAccountConstraints(_ view:UIView){
-        view.addSubview(createAccountLabel)
         
         createAccountLabel.leadingAnchor.constraint(equalTo: dontHaveAnAccountLabel.leadingAnchor, constant: 170).isActive = true
         createAccountLabel.bottomAnchor.constraint(equalTo: dontHaveAnAccountLabel.bottomAnchor).isActive = true
     }
     
-    func setRightButtonInPasswordField(_ view:UIView){
-        view.addSubview(seePasswordButton)
-        self.passwordTextField.rightView = seePasswordButton
-        self.passwordTextField.rightViewMode = .always
-    }
+   
     
 }
 
-
-/*
- 
- let sampleTextField =  UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
- sampleTextField.placeholder = "Enter text here"
- sampleTextField.font = UIFont.systemFont(ofSize: 15)
- sampleTextField.borderStyle = UITextField.BorderStyle.roundedRect
- sampleTextField.autocorrectionType = UITextAutocorrectionType.no
- sampleTextField.keyboardType = UIKeyboardType.default
- sampleTextField.returnKeyType = UIReturnKeyType.done
- sampleTextField.clearButtonMode = UITextField.ViewMode.whileEditing
- sampleTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
- sampleTextField.delegate = self
- self.view.addSubview(sampleTextField)
- */
+//MARK:- Protocol-Delegate Methods
+private extension LoginView {
+    @objc func didTapLoginButton() {
+        delegate?.didTapLoginButton(email: emailTextField, password: passwordTextField)
+    }
+    
+    @objc func didTapCreateAccount(){
+        delegate?.didTapCreateAccount()
+    }
+    
+    
+}
