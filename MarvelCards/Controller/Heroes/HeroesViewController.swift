@@ -8,9 +8,13 @@
 
 import UIKit
 
-class HeroesViewController:ReusableViewController<HeroesView>{
+class HeroesViewController:ReusableTableViewController<HeroesView>{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
+    
 }
+
+
