@@ -8,14 +8,48 @@
 
 import UIKit
 
-class HomeViewController: ReusableViewController<HomeView>{
+class HomeViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+       
+        let comicsViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Comics", imageName: "comics")
+        
+        let heroesViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Heroes", imageName: "heroes")
+    
+        let profileViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Profile", imageName: "profile")
+        
+       
+        
+        viewControllers = [
+            comicsViewController,
+           heroesViewController,
+           profileViewController
+           
+        ]
+        selectedIndex = 0
+        
+      
     }
     
+    
+   
+    func creteTabBarAndNavItems(viewController: UIViewController, title:String, imageName:String) -> UIViewController{
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        
+
+        viewController.navigationItem.title = title
+        viewController.tabBarItem.title = title
+        viewController.tabBarItem.image = UIImage(named: imageName)
+        viewController.view.backgroundColor = .white
+       
+        return navigationController
+        
+    }
 
 
 }

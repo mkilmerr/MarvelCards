@@ -9,7 +9,7 @@
 import UIKit
 
 import FirebaseAuth
-class LoginViewControllerTest:ReusableViewController<LoginView>{
+class LoginViewController:ReusableViewController<LoginView>{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class LoginViewControllerTest:ReusableViewController<LoginView>{
 }
 
 
-extension LoginViewControllerTest:LoginViewDelegate{
+extension LoginViewController:LoginViewDelegate{
     func didTapLoginButton(email: UITextField, password: UITextField) {
         guard let emailText = email.text else{return}
         guard let passwordText = password.text else{return}
@@ -44,7 +44,7 @@ extension LoginViewControllerTest:LoginViewDelegate{
     
 }
 
-extension LoginViewControllerTest{
+extension LoginViewController{
     func loginInAccount(email:String, password:String){
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if user != nil {

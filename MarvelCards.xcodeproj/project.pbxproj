@@ -26,6 +26,7 @@
 		64506CE12466F1DE00399563 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64506CE02466F1DE00399563 /* CreateAccountView.swift */; };
 		64506CE32466F64A00399563 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64506CE22466F64A00399563 /* CreateAccountViewController.swift */; };
 		64506CE52467116200399563 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64506CE42467116200399563 /* HomeView.swift */; };
+		64506CE72467138A00399563 /* ReusableTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64506CE62467138A00399563 /* ReusableTabBarViewController.swift */; };
 		64589CF02461F84C00BC013D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CEF2461F84C00BC013D /* DataModel.swift */; };
 		64589CF32461F88F00BC013D /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF22461F88F00BC013D /* ResultsModel.swift */; };
 		64589CF52461F8B700BC013D /* HeaderInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589CF42461F8B700BC013D /* HeaderInfoModel.swift */; };
@@ -101,6 +102,7 @@
 		64506CE02466F1DE00399563 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		64506CE22466F64A00399563 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		64506CE42467116200399563 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		64506CE62467138A00399563 /* ReusableTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTabBarViewController.swift; sourceTree = "<group>"; };
 		64589CEF2461F84C00BC013D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		64589CF22461F88F00BC013D /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
 		64589CF42461F8B700BC013D /* HeaderInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoModel.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				64A34EC02466E0340062ED13 /* ReusableView.swift */,
 				64A34EC32466E1FD0062ED13 /* ReusableViewController.swift */,
+				64506CE62467138A00399563 /* ReusableTabBarViewController.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				64506CE12466F1DE00399563 /* CreateAccountView.swift in Sources */,
 				6428955A2460AB76005361D0 /* AppDelegate.swift in Sources */,
 				64506CE32466F64A00399563 /* CreateAccountViewController.swift in Sources */,
+				64506CE72467138A00399563 /* ReusableTabBarViewController.swift in Sources */,
 				642895932460BBCF005361D0 /* CharactersServiceRaw.swift in Sources */,
 				64589CF72461F8DA00BC013D /* ThumbnailModel.swift in Sources */,
 				64506CE52467116200399563 /* HomeView.swift in Sources */,
