@@ -17,7 +17,7 @@ class HomeViewController: UITabBarController {
        
         let comicsViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Comics", imageName: "comics")
         
-        let heroesViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Heroes", imageName: "heroes")
+        let heroesViewController = creteTabBarAndNavItems(viewController: HeroesViewController(), title: "Heroes", imageName: "heroes")
     
         let profileViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Profile", imageName: "profile")
         
@@ -45,7 +45,7 @@ class HomeViewController: UITabBarController {
         viewController.navigationItem.title = title
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = UIImage(named: imageName)
-        viewController.view.backgroundColor = .white
+       
        
         return navigationController
         
