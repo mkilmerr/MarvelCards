@@ -84,6 +84,18 @@ class CreateAccountView: UIView {
         return txt
     }()
     
+    let createAccountButton:UIButton = {
+       let btn = UIButton()
+        btn.setTitle("Login", for: .normal)
+        btn.backgroundColor = UIColor.black
+        
+        btn.layer.cornerRadius = 18
+        
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        return btn
+    }()
+    
     
     
     
@@ -107,6 +119,7 @@ extension CreateAccountView{
         self.nameTextFieldConstraints(view)
         self.passwordTextFieldConstraints(view)
         self.confirmPasswordTextFieldConstraints(view)
+        self.createAccountButtonConstraints(view)
     }
     
     private func createAccountLabelConstraints(_ view:UIView){
@@ -148,6 +161,14 @@ extension CreateAccountView{
         confirmTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
         confirmTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
+    }
+    
+    private func createAccountButtonConstraints(_ view:UIView){
+        view.addSubview(createAccountButton)
         
+        createAccountButton.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 100).isActive = true
+        createAccountButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        createAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        createAccountButton.topAnchor.constraint(equalTo: confirmTextField.bottomAnchor, constant: 60).isActive = true
     }
 }

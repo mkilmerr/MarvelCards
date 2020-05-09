@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import Firebase
 class CreateAccountViewController: UIViewController {
-   let createAccountView = CreateAccountView()
+    
+    
+    let createAccountView = CreateAccountView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,36 +23,51 @@ class CreateAccountViewController: UIViewController {
         createAccountView.nameTextField.delegate = self
         createAccountView.passwordTextField.delegate = self
         createAccountView.confirmTextField.delegate = self
-
+        
+        createAccountView.createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-
+        
     }
-
-
+    
+    
+    @objc func createAccountButtonTapped(){
+        print("create account")
+        
+        let samePassword = self.samePasswordAndConfirmPassword(password: createAccountView.passwordTextField, confirmPassword: createAccountView.confirmTextField)
+        
+        if samePassword {
+            if let email = createAccountView.emailTextField.text, let password = createAccountView.passwordTextField.text, let _ = createAccountView.confirmTextField.text, let name = createAccountView.nameTextField.text{
+                
+                CreateAccountService.shared.createAccount(email: email, password: password, name: name) { (user, error) in
+                    if user != nil {
+                        let homeViewController = HomeViewController()
+                        homeViewController.modalPresentationStyle = .currentContext
+                        self.present(homeViewController, animated: true)
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    
+    
 }
 
 extension CreateAccountViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let isEmpty = self.verifyIfFieldsAreEmpty(email: createAccountView.emailTextField, name: createAccountView.nameTextField, password: createAccountView.passwordTextField, confirmPassword: createAccountView.confirmTextField)
-             
-             print(isEmpty)
         
-        let samePassword = self.samePasswordAndConfirmPassword(password: createAccountView.passwordTextField, confirmPassword: createAccountView.confirmTextField)
+    
         
-        if samePassword {
-            if let email = createAccountView.emailTextField.text, let password = createAccountView.passwordTextField.text, let confirmPassword = createAccountView.confirmTextField.text{
-               
-                CreateAccountService.shared.createAccount(email: email, password: password)
-            }
-        }
         return true
         
-     
+        
     }
     
     
