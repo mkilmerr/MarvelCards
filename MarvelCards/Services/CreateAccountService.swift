@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import RNCryptor
 
 class CreateAccountService {
     static let shared = CreateAccountService()
@@ -30,6 +31,10 @@ class CreateAccountService {
         }
         
     }
+    
+   
+
+
 }
 
 /*

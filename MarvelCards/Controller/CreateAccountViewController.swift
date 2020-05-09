@@ -36,8 +36,7 @@ class CreateAccountViewController: UIViewController {
     
     
     @objc func createAccountButtonTapped(){
-        print("create account")
-        
+       
         let samePassword = self.samePasswordAndConfirmPassword(password: createAccountView.passwordTextField, confirmPassword: createAccountView.confirmTextField)
         
         if samePassword {
