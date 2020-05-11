@@ -9,6 +9,8 @@
 import UIKit
 
 class HeroesViewCell:UICollectionViewCell{
+ 
+    let heroName:UILabel = .labelDefault(title:"hero name",fontSize:18)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,9 +18,15 @@ class HeroesViewCell:UICollectionViewCell{
         layer.cornerRadius = 16
         clipsToBounds = true
         
-        backgroundColor = .blue
+        backgroundColor = .mainBackground
        
-       
+        addSubview(heroName)
+        
+        let stackView = UIStackView(arrangedSubviews:[heroName])
+        
+        addSubview(stackView)
+        
+        self.autoLayoutConstraints(stackView)
         
         
     }

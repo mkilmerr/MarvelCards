@@ -15,6 +15,8 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>{
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
         
@@ -23,9 +25,9 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>{
 }
 
 
-extension HeroesViewController{
+extension HeroesViewController:UICollectionViewDelegateFlowLayout{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,6 +35,11 @@ extension HeroesViewController{
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: self.view.bounds.size.width - 10, height: self.view.bounds.size.width)
+    }
+    
 }
 
 
