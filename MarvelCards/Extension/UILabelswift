@@ -18,6 +18,5 @@ extension UILabel{
         lbl.text = title
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
-        
     }
 }

@@ -1,15 +1,17 @@
 //
-//  ReusableTableViewController.swift
+//  ReusableVerticalCollectionController.swift
 //  MarvelCards
 //
-//  Created by Marcos Kilmer on 09/05/20.
+//  Created by Marcos Kilmer on 11/05/20.
 //  Copyright © 2020 mkilmer. All rights reserved.
 //
 
+
+
 import UIKit
 
-class ReusableHeroesCollectionView<View:ReusableView>:UICollectionViewController{
-    let cellID = "CELL_ID"
+class ReusableVerticalCollectionView<View:ReusableView>:UICollectionViewController{
+   
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -23,24 +25,12 @@ class ReusableHeroesCollectionView<View:ReusableView>:UICollectionViewController
     }
     
     override func viewDidLoad() {
-        collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        
-        
-        collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
+      
         
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! HeroesViewCell
-        
-        return cell
-    }
 }
 
 

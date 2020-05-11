@@ -27,14 +27,14 @@ class HeroesView:ReusableView{
     
     override func setViews() {
         super.setViews()
-        backgroundColor =  UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
+        backgroundColor = .mainBackground
         
     }
     
     override func layoutViews() {
         super.layoutViews()
        
-       
+        
     }
     
     

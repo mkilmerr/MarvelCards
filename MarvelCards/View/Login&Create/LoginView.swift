@@ -99,7 +99,7 @@ class LoginView: ReusableView,UITextFieldDelegate {
     override func setViews() {
         super.setViews()
         
-        self.backgroundColor =  UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
+        self.backgroundColor =  .mainBackground
         addSubview(loginLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
