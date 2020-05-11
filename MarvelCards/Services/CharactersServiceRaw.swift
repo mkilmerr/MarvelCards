@@ -13,19 +13,21 @@ class CharactersServiceRaw{
     
     static let shared = CharactersServiceRaw()
     
-    func fetchCharactersWithLimit(limit:Int){
+    func fetchCharactersWithLimit(completion: @escaping(CharactersModel?,Error?)->()){
         guard let url = URL(string: api) else{return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
+                completion(nil,error)
                 return
             }
                 guard let dataReceive = data else{return}
             
             do{
                 let character = try JSONDecoder().decode(CharactersModel.self, from: dataReceive)
-                print(character)
+                completion(character,nil)
             }catch{
+                completion(nil,error)
                 return
             }
 

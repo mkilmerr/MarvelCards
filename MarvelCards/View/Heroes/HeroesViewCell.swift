@@ -47,20 +47,3 @@ extension HeroesViewCell{
         
     }
 }
-
-/*
- 
- layer.cornerRadius = 16
- clipsToBounds = true
- 
- 
- 
- let stackView = UIStackView(arrangedSubviews: [nameHero])
- stackView.translatesAutoresizingMaskIntoConstraints = false
- stackView.axis = .horizontal
- stackView.spacing = 16
- stackView.alignment = .center
- 
- addSubview(stackView)
- self.autoLayoutConstraints(stackView)
- */
