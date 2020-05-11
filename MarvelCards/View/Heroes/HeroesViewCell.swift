@@ -8,27 +8,18 @@
 
 import UIKit
 
-class HeroesViewCell:UITableViewCell{
-    let nameHero:UILabel = .labelDefault(title: "Name heroes", fontSize: 18)
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+class HeroesViewCell:UICollectionViewCell{
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        backgroundColor = .purple
-        
-        
-        layer.cornerRadius = 22
+        layer.cornerRadius = 16
         clipsToBounds = true
         
+        backgroundColor = .blue
+       
+       
         
-        
-        let stackView = UIStackView(arrangedSubviews: [nameHero])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 16
-        stackView.alignment = .center
-        
-        addSubview(stackView)
-        self.autoLayoutConstraints(stackView)
         
     }
     
@@ -40,10 +31,28 @@ class HeroesViewCell:UITableViewCell{
 extension HeroesViewCell{
     
     func autoLayoutConstraints(_ stackView:UIStackView){
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
+        
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 50).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         stackView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-      
+        
     }
 }
+
+/*
+ 
+ layer.cornerRadius = 16
+ clipsToBounds = true
+ 
+ 
+ 
+ let stackView = UIStackView(arrangedSubviews: [nameHero])
+ stackView.translatesAutoresizingMaskIntoConstraints = false
+ stackView.axis = .horizontal
+ stackView.spacing = 16
+ stackView.alignment = .center
+ 
+ addSubview(stackView)
+ self.autoLayoutConstraints(stackView)
+ */
