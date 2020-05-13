@@ -13,7 +13,7 @@ protocol LoginViewDelegate: class {
     func didTapCreateAccount()
 }
 
-class LoginView: ReusableView,UITextFieldDelegate {
+class LoginView: ReusableView {
     var gestureRecognizer:UITapGestureRecognizer!
     weak var delegate: LoginViewDelegate?
     
@@ -37,10 +37,11 @@ class LoginView: ReusableView,UITextFieldDelegate {
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
-        
+        txt.backgroundColor = .white
+        txt.textColor = .black
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
@@ -54,10 +55,13 @@ class LoginView: ReusableView,UITextFieldDelegate {
         txt.isSecureTextEntry = true
         txt.keyboardType = UIKeyboardType.default
         txt.borderStyle = UITextField.BorderStyle.roundedRect
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.layer.cornerRadius = 30
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
+        txt.backgroundColor = .white
+        txt.textColor = .black
+
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
@@ -196,4 +200,35 @@ private extension LoginView {
     }
     
     
+}
+
+
+extension LoginView:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+          print("textFieldShouldReturn")
+          textField.resignFirstResponder()
+          return true
+      }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+          print("textFieldShouldBeginEditing")
+          return true
+      }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+          print("textFieldDidBeginEditing")
+          print("Leaving textFieldDidBeginEditing")
+      }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+          print("textField")
+          print("Leaving textField")
+          return true
+      }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+          print("textFieldDidEndEditing")
+        print("textField = \(String(describing: textField.text))")
+          print("Leaving textFieldDidEndEditing")
+      }
 }

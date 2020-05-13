@@ -34,7 +34,8 @@ class CreateAccountViewTest:ReusableView{
         txt.returnKeyType = UIReturnKeyType.done
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
-        
+        txt.backgroundColor = .white
+        txt.textColor = .black
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
     }()
@@ -47,6 +48,8 @@ class CreateAccountViewTest:ReusableView{
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
         txt.returnKeyType = UIReturnKeyType.done
+        txt.backgroundColor = .white
+        txt.textColor = .black
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
         
