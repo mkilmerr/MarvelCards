@@ -7,10 +7,21 @@
 //
 
 import UIKit
-
+import SDWebImage
 class HeroesViewCell:UICollectionViewCell{
- 
+    var results:Results!{
+        didSet{
+            if let heroPath = results.thumbnail?.path, let heroExtension = results.thumbnail?.extension, let name = results.name{
+                let heroPathHTTPS = "https" + heroPath.dropFirst(4)
+                thumbnail.sd_setImage(with: URL(string: "\(heroPathHTTPS).\(heroExtension)"), completed: nil)
+                heroName.text = name
+                print("\(heroPathHTTPS).\(heroExtension)")
+            }
+        }
+    }
     let heroName:UILabel = .labelDefault(title:"hero name",fontSize:18)
+
+    var thumbnail:UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,15 +29,21 @@ class HeroesViewCell:UICollectionViewCell{
         layer.cornerRadius = 16
         clipsToBounds = true
         
-        backgroundColor = .mainBackground
-       
+        backgroundColor = .black
         addSubview(heroName)
+        heroName.textColor = .white
         
-        let stackView = UIStackView(arrangedSubviews:[heroName])
+        thumbnail = UIImageView.heroesThumbnailImage(width: self.bounds.width, height:self.bounds.height - 30)
         
-        addSubview(stackView)
+         addSubview(thumbnail)
         
-        self.autoLayoutConstraints(stackView)
+        heroName.translatesAutoresizingMaskIntoConstraints = false
+        heroName.topAnchor.constraint(equalTo: thumbnail.bottomAnchor, constant: 2).isActive = true
+        heroName.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
+
+       
+
         
         
     }

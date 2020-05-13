@@ -206,12 +206,13 @@ private extension LoginView {
 extension LoginView:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
           print("textFieldShouldReturn")
-          textField.resignFirstResponder()
+          endEditing(true)
           return true
       }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
           print("textFieldShouldBeginEditing")
+           endEditing(false)
           return true
       }
 

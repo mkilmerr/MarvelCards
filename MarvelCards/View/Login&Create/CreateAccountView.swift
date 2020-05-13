@@ -11,7 +11,7 @@ import UIKit
 protocol CreateAccountDelegate:class{
     func didTapCreateAccountButton(password:UITextField, confirmPassword:UITextField, name:UITextField, email:UITextField)
 }
-class CreateAccountViewTest:ReusableView{
+class CreateAccountView:ReusableView{
     weak var delegate:CreateAccountDelegate?
     //MARK:- UI Elements
     lazy var createAccountLabel:UILabel = {
@@ -31,7 +31,7 @@ class CreateAccountViewTest:ReusableView{
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
         txt.backgroundColor = .white
@@ -47,7 +47,7 @@ class CreateAccountViewTest:ReusableView{
         txt.borderStyle = UITextField.BorderStyle.roundedRect
         txt.keyboardType = UIKeyboardType.default
         txt.layer.cornerRadius = 30
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.backgroundColor = .white
         txt.textColor = .black
         txt.autocorrectionType = UITextAutocorrectionType.no
@@ -66,7 +66,7 @@ class CreateAccountViewTest:ReusableView{
         txt.isSecureTextEntry = true
         txt.keyboardType = UIKeyboardType.default
         txt.borderStyle = UITextField.BorderStyle.roundedRect
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.layer.cornerRadius = 30
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
@@ -82,7 +82,7 @@ class CreateAccountViewTest:ReusableView{
         txt.isSecureTextEntry = true
         txt.keyboardType = UIKeyboardType.default
         txt.borderStyle = UITextField.BorderStyle.roundedRect
-        txt.returnKeyType = UIReturnKeyType.done
+        txt.returnKeyType = UIReturnKeyType.continue
         txt.autocorrectionType = UITextAutocorrectionType.no
         txt.autocapitalizationType = UITextAutocapitalizationType.none
         txt.layer.cornerRadius = 30
@@ -105,7 +105,7 @@ class CreateAccountViewTest:ReusableView{
     
     override func setViews() {
         super.setViews()
-          self.backgroundColor =  UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
+        self.backgroundColor =  UIColor(red: 224/255, green: 32/255, blue: 48/255, alpha: 1)
         addSubview(createAccountLabel)
         addSubview(emailTextField)
         addSubview(nameTextField)
@@ -113,6 +113,10 @@ class CreateAccountViewTest:ReusableView{
         addSubview(confirmTextField)
         addSubview(createAccountButton)
         
+        emailTextField.delegate = self
+        nameTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmTextField.delegate = self
         createAccountButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
     }
     
@@ -130,9 +134,9 @@ class CreateAccountViewTest:ReusableView{
 }
 //MARK:- Constraints Methods
 
-extension CreateAccountViewTest{
+extension CreateAccountView{
     private func createAccountLabelConstraints(){
-   
+        
         
         createAccountLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         createAccountLabel.topAnchor.constraint(equalTo: topAnchor, constant: 140).isActive = true
@@ -140,7 +144,7 @@ extension CreateAccountViewTest{
     
     
     private func emailTextFieldConstraints(){
-       
+        
         
         emailTextField.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 50).isActive = true
         emailTextField.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
@@ -148,7 +152,7 @@ extension CreateAccountViewTest{
     }
     
     private func nameTextFieldConstraints(){
-      
+        
         
         nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
         nameTextField.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
@@ -157,7 +161,7 @@ extension CreateAccountViewTest{
     
     
     private func passwordTextFieldConstraints(){
-       
+        
         
         passwordTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20).isActive = true
         passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -165,7 +169,7 @@ extension CreateAccountViewTest{
     }
     
     private func confirmPasswordTextFieldConstraints(){
-     
+        
         
         confirmTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
         confirmTextField.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
@@ -173,7 +177,7 @@ extension CreateAccountViewTest{
     }
     
     private func createAccountButtonConstraints(){
-      
+        
         
         createAccountButton.widthAnchor.constraint(equalTo: widthAnchor, constant: -100).isActive = true
         createAccountButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -184,9 +188,42 @@ extension CreateAccountViewTest{
 
 //MARK:- Protocol-Delegate Methods
 
-extension CreateAccountViewTest{
+extension CreateAccountView{
     @objc func didTapCreateAccountButton(){
         delegate?.didTapCreateAccountButton(password: passwordTextField, confirmPassword: confirmTextField, name: nameTextField, email: emailTextField)
         
     }
 }
+
+
+extension CreateAccountView:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+        endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
+        endEditing(false)
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("textFieldDidBeginEditing")
+        print("Leaving textFieldDidBeginEditing")
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("textField")
+        print("Leaving textField")
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("textFieldDidEndEditing")
+        print("textField = \(String(describing: textField.text))")
+        print("Leaving textFieldDidEndEditing")
+    }
+}
+

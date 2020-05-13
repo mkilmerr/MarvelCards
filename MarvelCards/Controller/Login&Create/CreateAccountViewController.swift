@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class CreateAccountViewController:ReusableViewController<CreateAccountViewTest>{
+class CreateAccountViewController:ReusableViewController<CreateAccountView>{
     override func viewDidLoad(){
         super.viewDidLoad()
         

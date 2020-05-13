@@ -9,7 +9,7 @@
 import Foundation
 
 class CharactersServiceRaw{
-    let api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a"
+    let api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=50"
     
     static let shared = CharactersServiceRaw()
     
