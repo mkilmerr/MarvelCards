@@ -11,10 +11,11 @@ import UIKit
 import FirebaseAuth
 class LoginViewController:ReusableViewController<LoginView>{
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.delegate = self
-        
         
     }
     
@@ -29,7 +30,14 @@ class LoginViewController:ReusableViewController<LoginView>{
 extension LoginViewController:LoginViewDelegate{
     func didTapLoginButton(email: UITextField, password: UITextField) {
         guard let emailText = email.text else{return}
+        
+        if emailText.isEmpty{
+            self.showAlert("Email invalid", "try again")
+        }
         guard let passwordText = password.text else{return}
+        if passwordText.isEmpty{
+            self.showAlert("Password invalid", "try again")
+        }
         
         self.loginInAccount(email: emailText, password: passwordText)
         
@@ -50,10 +58,27 @@ extension LoginViewController{
             if user != nil {
                 let homeViewController = HomeViewController()
                 homeViewController.modalPresentationStyle = .currentContext
-                
                 self.present(homeViewController,animated: true)
             }
             
         }
+    }
+}
+extension LoginViewController {
+    public func showAlert(_ title:String, _ message:String) {
+        let alertVC = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .cancel,
+            handler: { action -> Void in
+        })
+        alertVC.addAction(okAction)
+        present(
+            alertVC,
+            animated: true,
+            completion: nil)
     }
 }

@@ -30,6 +30,8 @@ class LoginView: ReusableView {
         return label
     }()
     
+   
+    
     lazy var emailTextField:UITextField = {
         let txt = UITextField()
         txt.font = UIFont.loginAndCreateTextFieldLabel
