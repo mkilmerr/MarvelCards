@@ -29,6 +29,9 @@ class ReusableVerticalCollectionView<View:ReusableView>:UICollectionViewControll
         
         
     }
+    var customView: View {
+        return view as! View
+    }
     
     
 }

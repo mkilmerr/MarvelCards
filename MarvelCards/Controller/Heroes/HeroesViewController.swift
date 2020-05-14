@@ -8,12 +8,16 @@
 
 import UIKit
 
-class HeroesViewController: ReusableVerticalCollectionView<HeroesView>{
+class HeroesViewController: ReusableVerticalCollectionView<HeroesView>,UISearchBarDelegate{
     let cellID = "CELL_ID"
     var count:Int = 0
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+
     var results = [Results]()
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
@@ -21,10 +25,19 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>{
         collectionView.dataSource = self
         
         collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
-        
         self.fetchHeroes()
+        self.setupSearchBar()
      
         
+    }
+    fileprivate func setupSearchBar() {
+        definesPresentationContext = true
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.searchBar.delegate = self
+     let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+     textFieldInsideSearchBar?.textColor = .black
     }
     
 }
@@ -49,7 +62,7 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
 }
 
 extension HeroesViewController{
-    func fetchHeroes(){
+    fileprivate func fetchHeroes(){
         CharactersServiceRaw.shared.fetchCharactersWithLimit { (heroes, error) in
             if let heroes = heroes {
                 if let limit = heroes.data?.limit {
@@ -62,9 +75,6 @@ extension HeroesViewController{
                             self.collectionView.reloadData()
                                                }
                         }
-                        
-                       
-                    
                     
                 }
             }
