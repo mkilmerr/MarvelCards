@@ -58,6 +58,7 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
     }
     
 }
+//MARK:- Search Methods
 
 extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     func updateSearchResults(for searchController: UISearchController) {
@@ -79,6 +80,11 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filterContentForSearchText(searchText)
+        
+        if searchText.isEmpty{
+            self.isSearch = false
+            self.collectionView.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -98,23 +104,14 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
                 
             }
             
-            //            if self.results[hero].name!.contains(searchText){
-            //                print(self.results[hero].name!)
-            //            }
-            
             
         }
         
     }
     
 }
-/*
- filteredCandies = candies.filter { (candy: Candy) -> Bool in
- return candy.name.lowercased().contains(searchText.lowercased())
- }
- 
- tableView.reloadData()
- */
+
+//MARK:- UICollectionViewDelegateFlowLayout Methods
 
 extension HeroesViewController:UICollectionViewDelegateFlowLayout{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -144,6 +141,7 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
     
 }
 
+//MARK:- API Methods
 extension HeroesViewController{
     fileprivate func fetchHeroes(){
         CharactersServiceRaw.shared.fetchCharactersWithLimit { (heroes, error) in
