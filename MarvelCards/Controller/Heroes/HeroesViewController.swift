@@ -13,6 +13,9 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
     var count:Int = 0
     var isSearch:Bool = false
     var heroIndex:Int = 0
+    var offset:Int = 0
+    var limit:Int = 100
+    var increase:Int = 0
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     
@@ -42,7 +45,14 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
         searchController.searchBar.delegate = self
         
         collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
-        self.fetchHeroes()
+        
+//        self.fetchAPI("https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=0")
+//        self.fetchAPI("https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=100")
+//        print("->>>>>>>>",self.offset)
+        
+        self.fetchAllHeroes()
+        self.fetchAllHeroes()
+        
         self.setupSearchBar()
         
         
@@ -73,8 +83,7 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.isSearch = false
-        self.collectionView.reloadData()
+       
     }
     
     
@@ -95,7 +104,8 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     func filterContentForSearchText(_ searchText:String){
         
         for hero in 1..<self.count{
-            if self.results[hero].name! == searchText || self.results[hero].name!.contains(searchText){
+            if self.results[hero].name!.lowercased() == searchText.lowercased() || self.results[hero].name!.contains(searchText){
+                print("->>>>>>>>>.",self.results.count)
                 print(self.results[hero].name!)
                 print(self.results[hero])
                 self.isSearch = true
@@ -129,6 +139,8 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
             print(self.results[heroIndex])
             cell.results = self.results[heroIndex]
         }else{
+            print("INSIDE CELL ->>", self.results.count)
+            print(indexPath.row)
             cell.results = self.results[indexPath.item]
         }
         
@@ -141,18 +153,79 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
     
 }
 
-//MARK:- API Methods
 extension HeroesViewController{
-    fileprivate func fetchHeroes(){
-        CharactersServiceRaw.shared.fetchCharactersWithLimit { (heroes, error) in
+    fileprivate func fetchAllHeroes(){
+        var api:String
+        if self.offset == 0 {
+            api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=\(self.limit)&offset=\(self.offset)"
+            
+            self.offset = 100
+            self.limit = 100
+            self.increase+=1
+            
+            self.fetchAPI(api)
+            
+            
+        }else{
+            print("WIDNDNEDENDEBDEUDB")
+            self.increase+=1
+            self.offset = self.offset * self.increase
+            print(self.offset)
+            api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=\(self.limit)&offset=\(self.offset)"
+            
+            self.addMoreHeroes(api)
+            
+            print("OFFSET : \(self.offset) INCREASE : \(self.increase)")
+            
+        }
+        
+        
+        
+    }
+}
+
+extension HeroesViewController{
+    func fetchAPI(_ url:String){
+        
+        CharactersServiceRaw.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
             if let heroes = heroes {
-                if let limit = heroes.data?.limit {
+                if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
-                        //                        print(heroes.data?.results!)
-                        self.count = limit
+                        //                                             print(heroes.data?.results!)
+                        self.count = self.offset
                         
                         if let result = heroes.data?.results{
                             self.results.append(contentsOf: result)
+                            self.indicator.stopAnimating()
+                            print("HEROES COUNT ->>",self.results.count)
+                            self.collectionView.reloadData()
+                            
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+        
+    }
+}
+
+extension HeroesViewController{
+    func addMoreHeroes(_ url:String){
+        
+        CharactersServiceRaw.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
+            if let heroes = heroes {
+                if (heroes.data?.limit) != nil {
+                    DispatchQueue.main.sync {
+                        self.count = self.offset
+                        
+                        if let result = heroes.data?.results{
+                            
+                            var moreHeroes = [Results]()
+                            moreHeroes.append(contentsOf: result)
+                            self.results += moreHeroes
+                            print("MORE HEROES COUNT ->>",self.results.count)
                             self.indicator.stopAnimating()
                             self.collectionView.reloadData()
                             

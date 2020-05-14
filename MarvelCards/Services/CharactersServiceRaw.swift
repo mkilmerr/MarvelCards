@@ -9,12 +9,12 @@
 import Foundation
 
 class CharactersServiceRaw{
-    let api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=50"
+    let api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=200&offset=200"
     
     static let shared = CharactersServiceRaw()
     
-    func fetchCharactersWithLimit(completion: @escaping(CharactersModel?,Error?)->()){
-        guard let url = URL(string: api) else{return}
+    func fetchCharactersWithLimit(url:String,completion: @escaping(CharactersModel?,Error?)->()){
+        guard let url = URL(string: url) else{return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
