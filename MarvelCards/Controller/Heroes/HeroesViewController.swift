@@ -45,14 +45,12 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
         searchController.searchBar.delegate = self
         
         collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
-        
-//        self.fetchAPI("https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=0")
-//        self.fetchAPI("https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100&offset=100")
-//        print("->>>>>>>>",self.offset)
+
         
         self.fetchAllHeroes()
         self.fetchAllHeroes()
-        
+        self.fetchAllHeroes()
+      
         self.setupSearchBar()
         
         
@@ -102,12 +100,10 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     }
     
     func filterContentForSearchText(_ searchText:String){
-        
-        for hero in 1..<self.count{
+      
+        for hero in 0..<self.count{
+            print("HERO INDEX \(hero)")
             if self.results[hero].name!.lowercased() == searchText.lowercased() || self.results[hero].name!.contains(searchText){
-                print("->>>>>>>>>.",self.results.count)
-                print(self.results[hero].name!)
-                print(self.results[hero])
                 self.isSearch = true
                 self.heroIndex = hero
                 self.collectionView.reloadData()
@@ -136,12 +132,10 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! HeroesViewCell
         
         if self.isSearch{
-            print(self.results[heroIndex])
-            cell.results = self.results[heroIndex]
+            cell.results = self.results[self.heroIndex]
         }else{
-            print("INSIDE CELL ->>", self.results.count)
-            print(indexPath.row)
-            cell.results = self.results[indexPath.item]
+         
+            cell.results = self.results[indexPath.row]
         }
         
         return cell
@@ -162,7 +156,7 @@ extension HeroesViewController{
             self.offset = 100
             self.limit = 100
             self.increase+=1
-            
+          
             self.fetchAPI(api)
             
             
@@ -170,12 +164,14 @@ extension HeroesViewController{
             print("WIDNDNEDENDEBDEUDB")
             self.increase+=1
             self.offset = self.offset * self.increase
-            print(self.offset)
+            
+            
             api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=\(self.limit)&offset=\(self.offset)"
+            print("OFFSET : \(self.offset) INCREASE : \(self.increase) COUNT : \(self.count)")
             
             self.addMoreHeroes(api)
             
-            print("OFFSET : \(self.offset) INCREASE : \(self.increase)")
+           
             
         }
         
@@ -191,13 +187,14 @@ extension HeroesViewController{
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
-                        //                                             print(heroes.data?.results!)
-                        self.count = self.offset
+                       
+                      
                         
                         if let result = heroes.data?.results{
                             self.results.append(contentsOf: result)
                             self.indicator.stopAnimating()
-                            print("HEROES COUNT ->>",self.results.count)
+                            self.count = self.results.count
+                          
                             self.collectionView.reloadData()
                             
                         }
@@ -218,14 +215,15 @@ extension HeroesViewController{
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
-                        self.count = self.offset
+                       
                         
                         if let result = heroes.data?.results{
                             
                             var moreHeroes = [Results]()
                             moreHeroes.append(contentsOf: result)
                             self.results += moreHeroes
-                            print("MORE HEROES COUNT ->>",self.results.count)
+                       
+                            self.count = self.results.count
                             self.indicator.stopAnimating()
                             self.collectionView.reloadData()
                             

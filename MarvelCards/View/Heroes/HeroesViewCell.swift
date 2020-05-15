@@ -15,7 +15,6 @@ class HeroesViewCell:UICollectionViewCell{
                 let heroPathHTTPS = "https" + heroPath.dropFirst(4)
                 thumbnail.sd_setImage(with: URL(string: "\(heroPathHTTPS).\(heroExtension)"), completed: nil)
                 heroName.text = name
-                print("\(heroPathHTTPS).\(heroExtension)")
             }
         }
     }
