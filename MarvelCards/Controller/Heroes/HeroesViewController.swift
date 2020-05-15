@@ -65,6 +65,20 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
         textFieldInsideSearchBar?.textColor = .black
     }
     
+  
+    
+}
+
+//MARK:-
+
+extension HeroesViewController{
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let id = self.results[indexPath.row].id{
+            CharactersServiceMarvel.shared.fetchCharacterById(id: id) { (hero, error) in
+               
+            }
+        }
+      }
 }
 //MARK:- Search Methods
 
@@ -128,6 +142,8 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
         return self.count
     }
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! HeroesViewCell
         
@@ -140,6 +156,7 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
         
         return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: self.view.bounds.size.width - 10, height: self.view.bounds.size.width)
@@ -167,7 +184,6 @@ extension HeroesViewController{
             
             
             api = "https://gateway.marvel.com/v1/public/characters?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=\(self.limit)&offset=\(self.offset)"
-            print("OFFSET : \(self.offset) INCREASE : \(self.increase) COUNT : \(self.count)")
             
             self.addMoreHeroes(api)
             
@@ -183,7 +199,7 @@ extension HeroesViewController{
 extension HeroesViewController{
     func fetchAPI(_ url:String){
         
-        CharactersServiceRaw.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
+       CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
@@ -211,7 +227,7 @@ extension HeroesViewController{
 extension HeroesViewController{
     func addMoreHeroes(_ url:String){
         
-        CharactersServiceRaw.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
+       CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {

@@ -15,7 +15,7 @@
 		642895692460AB7B005361D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642895672460AB7B005361D0 /* LaunchScreen.storyboard */; };
 		642895742460AB7B005361D0 /* MarvelCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895732460AB7B005361D0 /* MarvelCardsTests.swift */; };
 		6428957F2460AB7B005361D0 /* MarvelCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */; };
-		642895932460BBCF005361D0 /* CharactersServiceRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895922460BBCF005361D0 /* CharactersServiceRaw.swift */; };
+		642895932460BBCF005361D0 /* CharactersServiceMarvel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642895922460BBCF005361D0 /* CharactersServiceMarvel.swift */; };
 		642895962460CA8D005361D0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; };
 		642895972460CA8D005361D0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 642895952460CA8D005361D0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428959A2460D17D005361D0 /* CharactersModel.swift */; };
@@ -98,7 +98,7 @@
 		6428957A2460AB7B005361D0 /* MarvelCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6428957E2460AB7B005361D0 /* MarvelCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCardsUITests.swift; sourceTree = "<group>"; };
 		642895802460AB7B005361D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		642895922460BBCF005361D0 /* CharactersServiceRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceRaw.swift; sourceTree = "<group>"; };
+		642895922460BBCF005361D0 /* CharactersServiceMarvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceMarvel.swift; sourceTree = "<group>"; };
 		642895952460CA8D005361D0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6428959A2460D17D005361D0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		6447FBDC2464B67700C282CF /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 		642895912460BBB2005361D0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				642895922460BBCF005361D0 /* CharactersServiceRaw.swift */,
+				642895922460BBCF005361D0 /* CharactersServiceMarvel.swift */,
 				6447FBE02464CC9A00C282CF /* CreateAccountService.swift */,
 			);
 			path = Services;
@@ -675,7 +675,7 @@
 				64506CE12466F1DE00399563 /* CreateAccountView.swift in Sources */,
 				6428955A2460AB76005361D0 /* AppDelegate.swift in Sources */,
 				64506CE32466F64A00399563 /* CreateAccountViewController.swift in Sources */,
-				642895932460BBCF005361D0 /* CharactersServiceRaw.swift in Sources */,
+				642895932460BBCF005361D0 /* CharactersServiceMarvel.swift in Sources */,
 				64EAD4EF2467489E00C224B2 /* HeroesViewCell.swift in Sources */,
 				64EAD4F224674A9C00C224B2 /* UILabel.swift in Sources */,
 				64589CF72461F8DA00BC013D /* ThumbnailModel.swift in Sources */,
