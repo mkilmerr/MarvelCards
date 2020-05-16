@@ -19,6 +19,15 @@ class LoginView: ReusableView {
     
     //MARK:- UI Elements
     
+    lazy var activityLoading:UIActivityIndicatorView = {
+        let act = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        act.hidesWhenStopped = true
+        act.translatesAutoresizingMaskIntoConstraints = false
+        act.color = .white
+        return act
+        
+    }()
+    
     lazy var loginLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 38)
@@ -112,6 +121,9 @@ class LoginView: ReusableView {
         addSubview(loginButton)
         addSubview(dontHaveAnAccountLabel)
         addSubview(createAccountLabel)
+        addSubview(activityLoading)
+        
+        
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -135,6 +147,7 @@ class LoginView: ReusableView {
         buttonLoginConstraints()
         dontHaveAnAccountConstraints()
         createAccountConstraints()
+        activityLoadingConstraints()
         
     }
     
@@ -187,6 +200,11 @@ private extension LoginView{
         createAccountLabel.bottomAnchor.constraint(equalTo: dontHaveAnAccountLabel.bottomAnchor).isActive = true
     }
     
+    func activityLoadingConstraints(){
+        activityLoading.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
+        activityLoading.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    }
+    
    
     
 }
@@ -194,6 +212,7 @@ private extension LoginView{
 //MARK:- Protocol-Delegate Methods
 private extension LoginView {
     @objc func didTapLoginButton() {
+        hideOrNotLoading()
         delegate?.didTapLoginButton(email: emailTextField, password: passwordTextField)
     }
     
@@ -202,6 +221,19 @@ private extension LoginView {
     }
     
     
+}
+
+private extension LoginView{
+    func hideOrNotLoading(){
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        if email.isEmpty || password.isEmpty {
+            activityLoading.stopAnimating()
+        }else{
+            activityLoading.startAnimating()
+        }
+    }
 }
 
 
