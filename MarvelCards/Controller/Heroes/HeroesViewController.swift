@@ -16,7 +16,7 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
     var offset:Int = 0
     var limit:Int = 100
     var increase:Int = 0
-    
+    var indexPathSelected:IndexPath?
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     
     fileprivate lazy var indicator:UIActivityIndicatorView = {
@@ -45,12 +45,12 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
         searchController.searchBar.delegate = self
         
         collectionView.register(HeroesViewCell.self, forCellWithReuseIdentifier:cellID)
-
+        
         
         self.fetchAllHeroes()
         self.fetchAllHeroes()
         self.fetchAllHeroes()
-      
+        
         self.setupSearchBar()
         
         
@@ -65,7 +65,7 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
         textFieldInsideSearchBar?.textColor = .black
     }
     
-  
+    
     
 }
 
@@ -73,12 +73,50 @@ class HeroesViewController: ReusableVerticalCollectionView<HeroesView>, UISearch
 
 extension HeroesViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let id = self.results[indexPath.row].id{
-            CharactersServiceMarvel.shared.fetchCharacterById(id: id) { (hero, error) in
-               
+        
+        let selectedIndexPath = self.indexPathSelected
+        
+        if self.isSearch{
+            
+            if self.results[selectedIndexPath!.row].id != nil{
+                self.selectedSpecificIndexpath(selectedIndexPath!.row, item: nil)
+            }
+           
+        }else{
+            if self.results[indexPath.item].id != nil{
+            
+                self.selectedSpecificIndexpath(nil, item: indexPath.item)
             }
         }
-      }
+        
+    }
+    
+    func selectedSpecificIndexpath(_ indexPath:Int?, item:Int?){
+        var selected: Int?
+        if self.isSearch{
+          
+            selected = self.indexPathSelected!.row
+        }else{
+           
+            selected = item
+        }
+        
+        if let id = self.results[selected!].id{
+          
+            CharactersServiceMarvel.shared.fetchCharacterById(id: id) { (hero, error) in
+                DispatchQueue.main.async {
+                    print("HERO ID ->>>>>> \(id)")
+                    let heroByID = HeroByIDViewController()
+                    heroByID.heroInfo = hero
+                    self.present(heroByID,animated: true)
+                }
+            }
+        }
+        
+     
+        
+    }
+
 }
 //MARK:- Search Methods
 
@@ -95,7 +133,7 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-       
+        
     }
     
     
@@ -114,13 +152,16 @@ extension HeroesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     }
     
     func filterContentForSearchText(_ searchText:String){
-      
+        
         for hero in 0..<self.count{
-            print("HERO INDEX \(hero)")
+            
             if self.results[hero].name!.lowercased() == searchText.lowercased() || self.results[hero].name!.contains(searchText){
                 self.isSearch = true
                 self.heroIndex = hero
                 self.collectionView.reloadData()
+                print("->>>>>>>>>>>>>>>>>>>>>>",IndexPath(row: heroIndex, section: 1))
+                
+                self.indexPathSelected = IndexPath(row: heroIndex, section: 1)
                 
             }
             
@@ -145,17 +186,21 @@ extension HeroesViewController:UICollectionViewDelegateFlowLayout{
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //        print(indexPath.compare(<#T##other: IndexPath##IndexPath#>))
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! HeroesViewCell
         
         if self.isSearch{
             cell.results = self.results[self.heroIndex]
         }else{
-         
-            cell.results = self.results[indexPath.row]
+            
+            cell.results = self.results[indexPath.item]
         }
         
         return cell
     }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -173,7 +218,7 @@ extension HeroesViewController{
             self.offset = 100
             self.limit = 100
             self.increase+=1
-          
+            
             self.fetchAPI(api)
             
             
@@ -187,7 +232,7 @@ extension HeroesViewController{
             
             self.addMoreHeroes(api)
             
-           
+            
             
         }
         
@@ -199,18 +244,18 @@ extension HeroesViewController{
 extension HeroesViewController{
     func fetchAPI(_ url:String){
         
-       CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
+        CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
-                       
-                      
+                        
+                        
                         
                         if let result = heroes.data?.results{
                             self.results.append(contentsOf: result)
                             self.indicator.stopAnimating()
                             self.count = self.results.count
-                          
+                            
                             self.collectionView.reloadData()
                             
                         }
@@ -227,18 +272,18 @@ extension HeroesViewController{
 extension HeroesViewController{
     func addMoreHeroes(_ url:String){
         
-       CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
+        CharactersServiceMarvel.shared.fetchCharactersWithLimit(url: url) { (heroes, error) in
             if let heroes = heroes {
                 if (heroes.data?.limit) != nil {
                     DispatchQueue.main.sync {
-                       
+                        
                         
                         if let result = heroes.data?.results{
                             
                             var moreHeroes = [Results]()
                             moreHeroes.append(contentsOf: result)
                             self.results += moreHeroes
-                       
+                            
                             self.count = self.results.count
                             self.indicator.stopAnimating()
                             self.collectionView.reloadData()

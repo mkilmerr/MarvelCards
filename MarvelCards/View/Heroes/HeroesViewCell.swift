@@ -31,7 +31,7 @@ class HeroesViewCell:UICollectionViewCell{
         backgroundColor = .black
         addSubview(heroName)
         heroName.textColor = .white
-        
+       
         thumbnail = UIImageView.heroesThumbnailImage(width: self.bounds.width, height:self.bounds.height - 30)
         
          addSubview(thumbnail)
