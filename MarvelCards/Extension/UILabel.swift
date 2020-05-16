@@ -16,7 +16,7 @@ extension UILabel{
         lbl.font = UIFont.boldSystemFont(ofSize: fontSize)
         lbl.textColor = UIColor.black
         lbl.text = title
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+       
         return lbl
     }
 }
