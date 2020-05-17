@@ -12,11 +12,11 @@ import Foundation
 struct ComicByHeroID:Decodable{
     var code:Int?
     var status:String?
-    var copyrigh:String?
+    var copyright:String?
     var attributionText:String?
     var attributionHTML:String?
     var etag:String?
-
+    var data:DataByID?
     
 }
 
