@@ -17,6 +17,10 @@ extension UIImageView{
         img.widthAnchor.constraint(equalToConstant: width).isActive = true
         img.heightAnchor.constraint(equalToConstant: height).isActive = true
         img.clipsToBounds = true
+        
+        img.layer.cornerRadius = 22
+        
+        img.translatesAutoresizingMaskIntoConstraints = false
        
         img.contentMode = .scaleAspectFill
         

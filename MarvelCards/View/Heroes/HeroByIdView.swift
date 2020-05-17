@@ -17,11 +17,13 @@ class HeroByIdView:ReusableView{
     var hero:CharactersModel?{
         didSet{
             for hero in hero!.data!.results!{
-                if let heroPath = hero.thumbnail?.path, let heroExtension = hero.thumbnail?.extension, let name = hero.name{
+                
+                if let heroPath = hero.thumbnail?.path, let heroExtension = hero.thumbnail?.extension, let name = hero.name, let numberOfComicsAvaliable = hero.comics?.available{
+                    
                     let heroPathHTTPS = "https" + heroPath.dropFirst(4)
                     heroImage.sd_setImage(with: URL(string: "\(heroPathHTTPS).\(heroExtension)"), completed: nil)
                     heroName.text = name
-                    
+                    numberOfComics.text = String(numberOfComicsAvaliable)
                 }
                 
             }
@@ -32,7 +34,7 @@ class HeroByIdView:ReusableView{
     weak var delegate:HeroByIdDelegate?
     var heroName:UILabel = .labelDefault(title:"hero name",fontSize:18)
     var comicsLabel:UILabel = .labelDefault(title: "Nº Comics : ", fontSize: 17)
-    var numberOfComics:UILabel = .labelDefault(title: "number of comics", fontSize: 12)
+    var numberOfComics:UILabel = .labelDefault(title: "number of comics", fontSize: 17)
     var heroImage:UIImageView!
     
     override func setViews() {
@@ -40,11 +42,14 @@ class HeroByIdView:ReusableView{
         //        setHero()
         
         
-        heroImage = UIImageView.heroesThumbnailImage(width: 300,height: 100)
+        heroImage = UIImageView.heroesThumbnailImage(width: 300,height: 300)
+        
+        
         
         addSubview(heroImage)
         addSubview(heroName)
         addSubview(comicsLabel)
+        addSubview(numberOfComics)
         
         
         
@@ -56,6 +61,7 @@ class HeroByIdView:ReusableView{
         heroImageConstraints()
         heroNameConstraints()
         comicLabelConstraints()
+        numberOfComicsConstraints()
         
     }
     
@@ -68,8 +74,8 @@ class HeroByIdView:ReusableView{
 fileprivate extension HeroByIdView{
     func heroImageConstraints(){
        
-        heroImage.contentMode = .scaleAspectFit
-        heroName.layer.cornerRadius = 10
+      
+        heroName.layer.cornerRadius = 22
         
         heroImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         heroImage.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
@@ -92,6 +98,14 @@ fileprivate extension HeroByIdView{
 //        comicsLabel.translatesAutoresizingMaskIntoConstraints = false
 //        comicsLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 20).isActive = true
 //        comicsLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    }
+    
+    func numberOfComicsConstraints(){
+        numberOfComics.translatesAutoresizingMaskIntoConstraints = false
+        numberOfComics.leadingAnchor.constraint(equalTo: comicsLabel.leadingAnchor, constant: 100).isActive = true
+        numberOfComics.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        numberOfComics.topAnchor.constraint(equalTo: comicsLabel.topAnchor).isActive = true
+        
     }
     
     
