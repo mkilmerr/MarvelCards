@@ -14,7 +14,7 @@ class ComicByIDService{
     
     func fetchComicByID(id:Int,completion: @escaping(ComicByHeroID?,Error?)->()){
         
-        let urlWithId = "https://gateway.marvel.com/v1/public/characters/\(id)/comics?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a"
+        let urlWithId = "https://gateway.marvel.com/v1/public/characters/\(id)/comics?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100"
         
         guard let url = URL(string: urlWithId) else{return}
         

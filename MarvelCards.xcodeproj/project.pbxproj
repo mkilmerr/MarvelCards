@@ -52,6 +52,10 @@
 		64A34EC12466E0340062ED13 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A34EC02466E0340062ED13 /* ReusableView.swift */; };
 		64A34EC42466E1FD0062ED13 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A34EC32466E1FD0062ED13 /* ReusableViewController.swift */; };
 		64B96AD224662A77009C4A11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B96AD124662A77009C4A11 /* HomeViewController.swift */; };
+		64CBCAFF24747E9E00E290D3 /* ComicsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBCAFE24747E9E00E290D3 /* ComicsService.swift */; };
+		64CBCB022474820200E290D3 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBCB012474820200E290D3 /* ComicsViewController.swift */; };
+		64CBCB052474823000E290D3 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBCB042474823000E290D3 /* ComicsView.swift */; };
+		64CBCB072474862A00E290D3 /* ComicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBCB062474862A00E290D3 /* ComicsViewCell.swift */; };
 		64D8BEC7246A125300D370D3 /* ReusableVerticalCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8BEC6246A125300D370D3 /* ReusableVerticalCollectionController.swift */; };
 		64D8BEC9246A134D00D370D3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8BEC8246A134D00D370D3 /* UIColor.swift */; };
 		64DF6E27246C91EB00FB7194 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF6E26246C91EB00FB7194 /* UIImage.swift */; };
@@ -143,6 +147,10 @@
 		64A34EC02466E0340062ED13 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		64A34EC32466E1FD0062ED13 /* ReusableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
 		64B96AD124662A77009C4A11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		64CBCAFE24747E9E00E290D3 /* ComicsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsService.swift; sourceTree = "<group>"; };
+		64CBCB012474820200E290D3 /* ComicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
+		64CBCB042474823000E290D3 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
+		64CBCB062474862A00E290D3 /* ComicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewCell.swift; sourceTree = "<group>"; };
 		64D8BEC6246A125300D370D3 /* ReusableVerticalCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableVerticalCollectionController.swift; sourceTree = "<group>"; };
 		64D8BEC8246A134D00D370D3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		64DF6E26246C91EB00FB7194 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -250,6 +258,7 @@
 		6428958C2460ABC7005361D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				64CBCB00247481E700E290D3 /* Comics */,
 				649774FB24672B34002E1259 /* Heroes */,
 				649774F724672A60002E1259 /* Login&Create */,
 				64B96AD124662A77009C4A11 /* HomeViewController.swift */,
@@ -260,6 +269,7 @@
 		6428958D2460ABD6005361D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				64CBCB032474821C00E290D3 /* Comics */,
 				649774F824672A86002E1259 /* Heroes */,
 				649774F624672A35002E1259 /* Login&Create */,
 				64506CE42467116200399563 /* HomeView.swift */,
@@ -282,6 +292,7 @@
 				642895922460BBCF005361D0 /* CharactersServiceMarvel.swift */,
 				6447FBE02464CC9A00C282CF /* CreateAccountService.swift */,
 				642E74AC2470CE9E00D73D2E /* ComicByIDService.swift */,
+				64CBCAFE24747E9E00E290D3 /* ComicsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -399,6 +410,23 @@
 				649774FE24672D5B002E1259 /* Login&Create */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		64CBCB00247481E700E290D3 /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				64CBCB012474820200E290D3 /* ComicsViewController.swift */,
+			);
+			path = Comics;
+			sourceTree = "<group>";
+		};
+		64CBCB032474821C00E290D3 /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				64CBCB042474823000E290D3 /* ComicsView.swift */,
+				64CBCB062474862A00E290D3 /* ComicsViewCell.swift */,
+			);
+			path = Comics;
 			sourceTree = "<group>";
 		};
 		64EAD4EB246743CE00C224B2 /* CollectionView */ = {
@@ -706,12 +734,15 @@
 				64D8BEC7246A125300D370D3 /* ReusableVerticalCollectionController.swift in Sources */,
 				642E74A72470C42100D73D2E /* ResultsByID.swift in Sources */,
 				6447FBE12464CC9A00C282CF /* CreateAccountService.swift in Sources */,
+				64CBCB022474820200E290D3 /* ComicsViewController.swift in Sources */,
 				64506CDF2466E55C00399563 /* LoginViewController.swift in Sources */,
 				64A34EC12466E0340062ED13 /* ReusableView.swift in Sources */,
 				649774FA24672AC9002E1259 /* HeroesView.swift in Sources */,
+				64CBCB072474862A00E290D3 /* ComicsViewCell.swift in Sources */,
 				64DF6E27246C91EB00FB7194 /* UIImage.swift in Sources */,
 				64758F7B246F8999005ECFC8 /* HeroByIDViewController.swift in Sources */,
 				649774FD24672B4C002E1259 /* HeroesViewController.swift in Sources */,
+				64CBCB052474823000E290D3 /* ComicsView.swift in Sources */,
 				64B96AD224662A77009C4A11 /* HomeViewController.swift in Sources */,
 				642E74AD2470CE9E00D73D2E /* ComicByIDService.swift in Sources */,
 				64506CE12466F1DE00399563 /* CreateAccountView.swift in Sources */,
@@ -727,6 +758,7 @@
 				642E74A92470C5D000D73D2E /* TextObjectByID.swift in Sources */,
 				64A34EBF2466E00D0062ED13 /* LoginView.swift in Sources */,
 				64A34EC42466E1FD0062ED13 /* ReusableViewController.swift in Sources */,
+				64CBCAFF24747E9E00E290D3 /* ComicsService.swift in Sources */,
 				64589CF52461F8B700BC013D /* HeaderInfoModel.swift in Sources */,
 				6428955C2460AB76005361D0 /* SceneDelegate.swift in Sources */,
 				64589D012461F98100BC013D /* URLModel.swift in Sources */,

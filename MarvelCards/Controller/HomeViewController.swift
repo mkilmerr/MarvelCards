@@ -15,7 +15,7 @@ class HomeViewController: UITabBarController {
         
         
        
-        let comicsViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Comics", imageName: "comics")
+        let comicsViewController = creteTabBarAndNavItems(viewController: ComicsViewController(), title: "Comics", imageName: "comics")
         
         let heroesViewController = creteTabBarAndNavItems(viewController: HeroesViewController(), title: "Heroes", imageName: "heroes")
     

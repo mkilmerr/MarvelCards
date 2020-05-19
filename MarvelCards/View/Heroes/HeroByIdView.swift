@@ -49,9 +49,7 @@ class HeroByIdView:ReusableView{
                 }
                
             }
-            for comic in comics!.data!.results!{
-                
-            }
+    
         }
     }
     

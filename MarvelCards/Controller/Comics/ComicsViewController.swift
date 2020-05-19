@@ -1,0 +1,62 @@
+//
+//  ComicsViewController.swift
+//  MarvelCards
+//
+//  Created by Marcos Kilmer on 19/05/20.
+//  Copyright © 2020 mkilmer. All rights reserved.
+//
+
+import UIKit
+
+
+class ComicsViewController:ReusableVerticalCollectionView<ComicsView>{
+    var results:ComicByHeroID?
+    let identifier = "identifier"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.backgroundColor = .white
+        collectionView.register(ComicsViewCell.self, forCellWithReuseIdentifier: identifier)
+//        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: -20)
+        
+        self.setResults()
+    }
+    
+    
+    
+}
+
+extension ComicsViewController:UICollectionViewDelegateFlowLayout{
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        return self.results?.data?.results?.count ?? 0
+       
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ComicsViewCell
+        cell.results = self.results?.data?.results![indexPath.item]
+        
+        return cell
+    }
+}
+
+extension ComicsViewController{
+    func setResults(){
+        ComicService.shared.fetch { (comics, error) in
+            if  error != nil {
+
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.results = comics
+                self.collectionView.reloadData()
+            }
+        }
+    }
+}
+
+
