@@ -95,9 +95,11 @@ class HeroByIdView:ReusableView{
         
         collectionView.register(HeroByIdViewCell.self, forCellWithReuseIdentifier: identifier)
         
-        collectionView.backgroundColor = .mainBackground
+        collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
         
         addSubview(collectionView)
         
