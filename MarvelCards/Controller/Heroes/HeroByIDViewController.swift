@@ -12,10 +12,10 @@ class HeroByIDViewController:ReusableViewController<HeroByIdView>{
     
     
     var heroInfo:CharactersModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.delegate = self
-        
         customView.setHero()
         
     }
@@ -23,12 +23,12 @@ class HeroByIDViewController:ReusableViewController<HeroByIdView>{
 }
 
 extension HeroByIDViewController:HeroByIdDelegate{
+   
+    
     func setHeroData(hero: CharactersModel?) {
         customView.setHeroInfo(info: heroInfo)
     }
     
-   
-    
-    
-    
 }
+
+

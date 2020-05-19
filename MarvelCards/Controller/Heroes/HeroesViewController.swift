@@ -108,6 +108,7 @@ extension HeroesViewController{
                     print("HERO ID ->>>>>> \(id)")
                     let heroByID = HeroByIDViewController()
                     heroByID.heroInfo = hero
+                    
                     self.present(heroByID,animated: true)
                 }
             }
