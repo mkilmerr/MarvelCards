@@ -46,6 +46,8 @@
 		64589D052461F9B100BC013D /* StoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64589D042461F9B100BC013D /* StoriesModel.swift */; };
 		64758F79246F8958005ECFC8 /* HeroByIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64758F78246F8958005ECFC8 /* HeroByIdView.swift */; };
 		64758F7B246F8999005ECFC8 /* HeroByIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64758F7A246F8999005ECFC8 /* HeroByIDViewController.swift */; };
+		648B3F3224759125003B0D30 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B3F3124759125003B0D30 /* ProfileView.swift */; };
+		648B3F3524759160003B0D30 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B3F3424759160003B0D30 /* ProfileViewController.swift */; };
 		649774FA24672AC9002E1259 /* HeroesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649774F924672AC9002E1259 /* HeroesView.swift */; };
 		649774FD24672B4C002E1259 /* HeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649774FC24672B4C002E1259 /* HeroesViewController.swift */; };
 		64A34EBF2466E00D0062ED13 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A34EBE2466E00D0062ED13 /* LoginView.swift */; };
@@ -141,6 +143,8 @@
 		64589D042461F9B100BC013D /* StoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesModel.swift; sourceTree = "<group>"; };
 		64758F78246F8958005ECFC8 /* HeroByIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroByIdView.swift; sourceTree = "<group>"; };
 		64758F7A246F8999005ECFC8 /* HeroByIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroByIDViewController.swift; sourceTree = "<group>"; };
+		648B3F3124759125003B0D30 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		648B3F3424759160003B0D30 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		649774F924672AC9002E1259 /* HeroesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesView.swift; sourceTree = "<group>"; };
 		649774FC24672B4C002E1259 /* HeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewController.swift; sourceTree = "<group>"; };
 		64A34EBE2466E00D0062ED13 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		6428958C2460ABC7005361D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				648B3F332475914F003B0D30 /* Profile */,
 				64CBCB00247481E700E290D3 /* Comics */,
 				649774FB24672B34002E1259 /* Heroes */,
 				649774F724672A60002E1259 /* Login&Create */,
@@ -269,6 +274,7 @@
 		6428958D2460ABD6005361D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				648B3F302475910B003B0D30 /* Profile */,
 				64CBCB032474821C00E290D3 /* Comics */,
 				649774F824672A86002E1259 /* Heroes */,
 				649774F624672A35002E1259 /* Login&Create */,
@@ -345,6 +351,22 @@
 				64589D042461F9B100BC013D /* StoriesModel.swift */,
 			);
 			path = CharacterServiceModel;
+			sourceTree = "<group>";
+		};
+		648B3F302475910B003B0D30 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				648B3F3124759125003B0D30 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		648B3F332475914F003B0D30 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				648B3F3424759160003B0D30 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		649774F624672A35002E1259 /* Login&Create */ = {
@@ -724,7 +746,9 @@
 				64758F79246F8958005ECFC8 /* HeroByIdView.swift in Sources */,
 				64589D052461F9B100BC013D /* StoriesModel.swift in Sources */,
 				642895642460AB76005361D0 /* MarvelCards.xcdatamodeld in Sources */,
+				648B3F3224759125003B0D30 /* ProfileView.swift in Sources */,
 				6428959B2460D17D005361D0 /* CharactersModel.swift in Sources */,
+				648B3F3524759160003B0D30 /* ProfileViewController.swift in Sources */,
 				642E74A52470C3C500D73D2E /* DataByID.swift in Sources */,
 				6447FBDD2464B67700C282CF /* UIFont.swift in Sources */,
 				64589CF92461F8F000BC013D /* ComicsModel.swift in Sources */,
