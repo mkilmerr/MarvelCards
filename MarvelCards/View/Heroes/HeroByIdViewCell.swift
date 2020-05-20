@@ -43,7 +43,7 @@ class HeroByIdViewCell:UICollectionViewCell{
     func comicNameConstraints(){
         comicName.translatesAutoresizingMaskIntoConstraints = false
         comicName.adjustsFontSizeToFitWidth = true
-               comicName.minimumScaleFactor = 0.5
+        comicName.minimumScaleFactor = 0.5
         comicName.topAnchor.constraint(equalTo: comicThumbnail.bottomAnchor, constant: 10).isActive = true
         comicName.widthAnchor.constraint(equalTo: comicThumbnail.widthAnchor, constant: 10).isActive = true
         

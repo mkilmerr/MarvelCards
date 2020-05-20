@@ -41,6 +41,11 @@ extension ComicsViewController:UICollectionViewDelegateFlowLayout{
         
         return cell
     }
+    
+    
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           return .init(width: self.view.bounds.size.width - 10, height: self.view.bounds.size.width)
+       }
 }
 
 extension ComicsViewController{

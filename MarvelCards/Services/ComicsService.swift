@@ -12,7 +12,7 @@ class ComicService{
     
     static let shared = ComicService()
     
-    let apiURL = "https://gateway.marvel.com/v1/public/comics?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=100"
+    let apiURL = "https://gateway.marvel.com/v1/public/comics?ts=1588624095&apikey=80d85d645cb9fdbe9ac5be7b3d90f2e6&hash=ba9d8a63b034a1969a0930afc5da505a&limit=60"
        
        func fetch(completion: @escaping(ComicByHeroID?,Error?)->() ){
            
